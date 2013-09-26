@@ -1,0 +1,1076 @@
+/*
+ * NE PAS MODIFIER CE FICHIER
+ * LE FICHIER ORIGINAL EST
+ * promontoire/htdocs/css/style.css 
+ *
+ */
+/* couleurs
+obs : rgb(198,229,72)
+prot: #009687
+env : #D9C311
+anim: #9D5FD9
+texte titre: #737373
+texte chapo: #666666
+texte labeur: #333333
+
+
+fond de carte : rgb(146,126,81)
+*******/
+
+/* Le body porte le background herisson */
+
+body {
+	background-color: rgb(170,163,150);
+	background-position: top right;
+	background-repeat: no-repeat;
+	font-family: arial,sans-serif;
+	font-size: 1em;
+	/* font-weight: 500; */
+	color: #333;
+	margin: 0px;
+	padding:0px;
+	text-align:center;
+}
+
+
+h1, h2 {
+	margin-top: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(198,229,72);
+	border-bottom-width: 3px;
+}
+
+h1 {
+	margin-top: 0px;
+	font-size: 30px;
+}
+
+.fond_boite {
+	background-color: rgb(255,255,255);
+}
+
+a img {
+	border: none;
+}
+
+input {
+	border: solid 1px #005e4e;
+}
+
+a {
+	text-decoration:	none;
+}
+
+a:hover {
+	text-decoration:	underline;
+}
+
+a:visited {
+	color: blue;
+}
+
+/* le div globcont contient tout le contenu de la page */
+div#globcont {
+	min-width: 1000px;
+	width: 1000px;
+	border: solid 1px #808080;
+	margin:0px auto;
+	margin-top: 15px;
+	text-align: left;
+}
+
+/* bloc-haut contient tout le header (logo, pancarte, recherche, ligne, raccourcis) */
+div#bloc-haut {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+div#banniere {
+	height: 180px;
+	background-image: url('../image/banniere_fond.jpg');
+	background-repeat: repeat-x;
+}
+
+div#banniere2 {
+	padding-left: 5px;
+	padding-top: 150px;
+	height: 30px;
+	background-image: url('../image/banniere_fond.png');
+	background-repeat: repeat-x;
+}
+.banniere ul,.banniere2 ul {
+	margin: 0px;
+	list-style-type: none;
+	padding: 0px;
+}
+.banniere li {
+	display:inline;
+	background-color: #eee;
+	padding: 3px;
+	border-bottom: solid 3px rgb(198,229,72);
+}
+.banniere a {
+	font-weight: bold;
+	color: black;
+}
+.banniere a:hover {
+	text-decoration: none;
+}
+
+.banniere li:hover {
+	background-color: white;
+}
+div.info {
+	margin-top:1em;
+	background-color: white;
+	border: solid 3px rgb(198,229,72);
+	padding-left: 100px;
+	min-height: 60px;
+	background-image: url('../image/logo_info.png');
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+/*
+li#banniere-current {
+	background-color: white;
+}
+*/
+#bandeaubas {
+	background-image: url('../image/bandeau_bas.png');
+	height:100px;
+	background-repeat: repeat-x;
+	/*position: relative;
+	top:-40px;
+	z-index: -1;*/
+}
+div#sous-titre {
+	float:right;
+	padding: 3px;
+	background-color: rgb(20,20,20);
+	color:white;
+	opacity: 0.5;
+	text-align: right;
+	font-family: arial;
+	font-style: italic;
+	font-weight: bold;
+}
+/*
+div#banniere-logo {
+	float:left;
+	height: 120px;
+	width: 350px;
+	background-image: url('../image/banniere_logo.png');
+	background-repeat: no-repeat;
+}
+
+div#banniere-slogan {
+	width:100%;
+	height: 120px;
+	background-position: center;
+	background-image: url('../image/banniere_slogan.png');
+	background-repeat: no-repeat;
+}
+*/
+/* bloc-haut est découpé en 3 rondelles */
+/* b-haut-1 : logo, pancartes, recherche */
+DIV#b-haut-1cont {
+	position:		relative;
+	height:			180px;
+	padding-left:		50px;
+	padding-right:		50px;
+}
+
+DIV#b-haut-1 {
+	position:		absolute;
+	bottom:			0px;
+	width:			90%;
+}
+
+DIV#b-haut-1in {
+	position:		relative;
+}
+
+DIV#b-haut-logo {
+	position:		absolute;
+	bottom:			0px;
+	left:			0px;
+}
+
+DIV#b-haut-pancartes {
+	position:		absolute;
+	bottom:			0px;
+	width: 100%;
+	background-image:	url('http://deco.picardie-nature.org/pix/carte_accueil.png');
+	background-position: 	center;
+	background-repeat:	no-repeat;
+	text-align: center;
+}
+
+#b-haut-rechcont {
+	position:		absolute;
+	bottom:			0px;
+	right:			0px;
+}
+
+#b-haut-recherche {
+	position:		relative;
+	height:			135px;
+	width:			250px;
+}
+
+DIV#recherche {
+	position:		absolute;
+	right:			0px;
+	top:			35%;
+}
+
+INPUT#rechok {
+	border:			none;
+	background:		rgb(198,229,72);
+	color:			#fff;
+}
+
+#liens {
+	position:		absolute;
+	right:			0px;
+	bottom:			0px;
+	text-align:		right;
+	color:			rgb(198,229,72);
+}
+
+/* b-haut-2 : ligne */
+div#b-haut-2 {
+	background:		rgb(198,229,72);
+	height:			2px;
+}
+
+/* style rollover pour les picto de l'entete */
+#header-bottom {
+	margin-top:		0.3em;
+	margin-bottom:		1em;
+	height:			42px;
+}
+
+#header-bottom A {
+	display:		block;
+	float:			left;
+	position:		relative;
+	width:			70px;
+	height:			42px;
+}
+
+div {
+	margin: 0px;
+	padding: 0px;
+	border-width: 0px;
+}
+
+IMG.head-bot-picto {
+	position:		absolute;
+	clip:			rect(0 70px 42px 0);
+}
+
+IMG.head-bot-picto:hover {
+	position:		absolute;
+	clip:			rect(42px 70px 84px 0);
+	margin-top:		-42px;
+}
+
+/* bloc-plaques contient les plaques de l'accueil */
+DIV#bloc-plaques {
+	margin-top: 		0px;
+	margin-left:		25px;
+	margin-right:		25px;
+}
+
+
+/* bloc-bas contient tout le footer (ligne, logo fne, liens) */
+DIV#bloc-bas {
+	margin-top:		0px;
+	padding-top:		25px;
+	background-color: 	rgb(200,200,200);
+}
+
+#logos {
+	text-align: center;
+}
+
+#logo_cr {
+	width: 94px;
+	height: 62px; /*124*/
+	background-image: url('http://www.picardie-nature.org/deco/picto_crp.png');
+}
+
+#logo_europe {
+	width: 94px;
+	height: 62px;
+	background-image: url('http://www.picardie-nature.org/deco/picto_europe.png');
+}
+
+#logo_dreal {
+	width: 94px;
+	height: 62px;
+	background-image: url('http://www.picardie-nature.org/deco/picto_minec.png');
+}
+
+#logo_cg02 {
+	width: 94px;
+	height: 62px;
+	background-image: url('http://www.picardie-nature.org/deco/picto_cg02.png');
+}
+
+#logo_cg80 {
+	width: 167px;
+	height: 62px;
+	background-image: url('http://www.picardie-nature.org/deco/picto_cg80.png');
+}
+
+#logo_amiens {
+	width: 94px;
+	height: 62px;
+	background-image: url('http://www.picardie-nature.org/deco/picto_am.png');
+}
+
+.hoverscroll {
+	display:inline-block;
+	background-position: 0% 100%;
+}
+
+.hoverscroll:hover {
+	background-position: 0% 0%;
+}
+
+.pn_main {
+	margin: 0px;
+	background-color: rgb(200,200,200);
+	min-height:300px;
+	width:980px;
+	padding-bottom: 20px;
+	clear:both;
+	padding-left: 10px;
+	padding-right: 10px;
+
+}
+
+.directive {margin-bottom: 1px;}
+.valeur {margin-top: 1px;}
+.desc { margin-left: 4px; }
+
+.desc h1 {
+	margin: 0px;
+	background-color: rgb(198,229,72);
+	color: white;
+	font-size: 16px;
+	padding: 4px;
+}
+.desc div {
+	margin: 0px;
+	margin-bottom: 20px;
+	background-color: white;
+	padding: 15px;
+	border-style: solid;
+	border-width: 4px;
+	border-top-style: none;
+	border-color: rgb(198,229,72);
+	font-size: 14px;
+}
+
+.bloc-bas p { 
+	margin-bottom: 0px; 
+}
+
+/* bloc-bas est découpé en 4 rondelles */
+/* b-bas-1 : filler */
+DIV#b-bas-1 {
+	position:		relative;
+	height:			43px;
+}
+
+/* b-bas-2 : ligne */
+DIV#b-bas-2 {
+	background:		rgb(198,229,72);
+	height:			4px;
+}
+
+DIV#b-bas-fne {
+	position:		absolute;
+	left:			92px;
+}
+
+DIV#b-bas-eas-cont {
+	position:		relative;
+	top:			35px;
+	text-align:		center;
+}
+SPAN#b-bas-eas {
+	background:		rgb(198,229,72);
+	color:			#FFFFFF;
+	padding-left:		2em;
+	padding-right:		2em;
+	font-weight:		bold;
+}
+
+/* b-bas-3 : liens */
+DIV#b-bas-3 {
+	text-align:		center;
+	margin-top:		0.5em;
+	margin-left:		auto;
+	margin-right:		auto;
+}
+
+DIV#b-bas-3, DIV#b-bas-3 A {
+	color:			rgb(198,229,72);
+}
+
+/* b-bas-4 : coordonnées */
+DIV#b-bas-4 {
+	text-align:		center;
+	margin:			auto;
+}
+
+
+/* Oreille Gauche - le menu de gauche */
+.oreille {
+	color: 			#737373;
+}
+
+#oreille_droite {
+	position:		absolute;
+	width:			130px;
+	right:			10px;
+}
+
+#oreille_gauche {
+	position: 		absolute;
+	width: 			130px;
+	left:			10px;
+}
+
+
+.oreille h1 {
+	margin:			2px;
+	padding:		0px;
+	padding-left:		6px;
+	border-left-width:	2px;
+	border-left-style:	solid;
+	border-color:		#737373;
+	font-size:		18px;
+}
+
+.oreille img {
+	border-top-width:	5px;
+	border-top-style:	solid;
+	border-color:		red;
+}
+
+.oreille ul {
+	list-style-type:	none;
+	padding:		0px;
+	margin:			0px;
+}
+
+.oreille li 
+{
+	border-bottom-width:	2px;
+	border-bottom-style:	solid;
+	border-bottom-color:	white;
+}
+
+.oreille li:hover {
+	border-bottom-color:	#737373;
+}
+
+.oreille a {
+	text-decoration:	none;
+	color:			#737373;
+	display:		block;
+	font-weight:		bold;
+	padding:		2px;
+}
+
+/* autocomplete prototype */
+div.autocomplete {
+	position:		absolute;
+	width:			250px;
+	background-color:	white;
+	border:			1px solid #888;
+	margin:			0px;
+	padding:		0px;
+}
+
+div.autocomplete ul {
+	list-style-type:	none;
+	margin:			0px;
+	padding:		0px;
+}
+
+div.autocomplete ul li.selected {
+	 background-color: 	#ffb;
+}
+
+div.autocomplete ul li {
+	 list-style-type:	none;
+	 display:		block;
+	 margin:		0;
+	 padding:		2px;
+	 cursor:		pointer;
+}
+
+.informal {
+	font-size: 		smaller;
+}
+
+.cal-mois {
+	font-size: 20px;
+	font-weight: normal;
+}
+.cal-jours {
+	font-size: 30px;
+	font-weigh: bold;
+}
+.cal-date {
+	position: relative;
+	width: 10em;
+	border-color: black;
+	border-size : 2px;
+	border-style: solid;
+	background-color: white;
+	text-align: center;
+}
+	
+.cal {
+	border-style: none;
+	background-color: white;
+	opacity: 0.8;
+	margin: 5px;
+	padding: 5px;
+}
+
+.cal-date- {
+}
+
+.cal-date-obs {
+	border-color: rgb(198,229,72);
+}
+
+.cal-date-anim {
+	border-color: #9D5FD9;
+}
+
+.cal-date-prot {
+	border-color: #006987;
+}
+.cal-date-asso {
+	border-color: #9D5FD9;
+}
+
+
+.cal-a {
+	color: black;
+}
+.cal-a:hover {
+	text-decoration: none;
+}
+
+img.bas-logos-picto-cg80 {		
+	clip:			rect(62px 167px 124px 0);
+	margin-top:		-62px;
+	position:		absolute;
+}
+
+img.bas-logos-picto-cg80:hover {
+	position:		absolute;
+	margin-top:		0px;
+	clip:			rect(0px 167px 62px 0px);
+}
+
+.liste-espece a:visited {
+	color: blue;
+}
+.liste_espece div {
+	margin-top: 2%;
+}
+
+.liste-espece {
+	display: none;
+	margin-top: 0px;
+	height: 500px;
+	overflow: scroll;
+	background-color: white;
+}
+
+.liste_espece_accueil {
+	display: block;
+	overflow: hidden;
+	margin-top: 250px;
+	height: 160px;
+	width: 220px;
+	font-size: larger;
+	font-weight: bold;
+	padding: 40px;
+}
+.liste_espece_accuei2l {
+	display: block;
+	/*height: 439px;*/
+	background-image: url('../image/plaq_commune.png');
+	background-repeat: no-repeat;
+	/*width: 220px;*/
+	padding: 40px;
+	/*padding-top: 260px;*/
+}
+
+#colonne {
+	/*margin-top: 2%;	*/
+	/* border: 1px solid rgb(198,229,72);*/
+}
+
+.colonne {
+	width: 250px;
+	max-width:250px;
+	float:left;
+	margin-right: 13px;
+}
+
+#zone_carte {
+	margin-left: 280px;
+}
+
+.colonne table {
+	border-collapse: collapse;
+}
+
+div .colonne-bloc {
+	background-color: white;
+	padding: 5px;
+	border-left: solid 3px rgb(198,229,72);
+	border-right: solid 3px rgb(198,229,72);
+}
+
+div .colonne-pied {
+	padding-bottom: 5px;
+	margin-bottom: 12px;
+	border-bottom: solid 3px rgb(198,229,72);
+}
+
+.colonne td {
+	padding: 3px;
+	cursor:pointer;
+}
+/*
+.colonne tr:hover {
+	background-color: rgb(198,229,72);
+}
+*/
+.btn_colonne {
+	font-weight: bold;
+}
+
+/*.btn_colonne:hover {
+	background-color: rgb(198,229,72);
+}*/
+
+.colonne p {
+	font-size: 10px;
+	margin:0px;
+	padding:4px;
+}
+
+.colonne h1, .desc h1, .tvilles h1 {
+	border-radius: 0 16px 0 0;
+	-moz-border-radius: 0 16px 0 0;
+	-webkit-border-radius: 0 16px 0 0;
+	margin:0px; 
+	padding: 0.5em;
+	background-color: rgb(198,229,72);
+	color: white;
+	font-size: 20px;
+}
+.tvilles a {
+	display:block;
+	margin:0px;
+	padding:0px;
+	padding: 2px;
+}
+.tvilles a:hover {
+	background-color: rgb(198,229,72);
+	text-decoration:none;
+	color: #333;
+}
+
+#colonne_carte {
+	height: 200px;
+	border-left: solid 3px rgb(198,229,72);
+	border-right: solid 3px rgb(198,229,72);
+}
+.colonne table {
+	border-left: solid 3px rgb(198,229,72);
+	border-right: solid 3px rgb(198,229,72);
+	border-bottom: solid 3px rgb(198,229,72);
+}
+.colonne tr {
+	background-color: white;
+}
+.colonne tr:hover {
+	background-color: rgb(198,229,72);
+}
+/*
+.colonne ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+.colonne li {
+	padding: 3px;
+	font-weight: bold;
+	cursor: pointer;
+	
+}
+*/
+.pointeur_auto li {
+	cursor: auto;
+}
+
+.colonne_t {
+	font-size: 12px;
+
+	
+}
+.colonne_v  {
+	text-align:center;
+	font-weight: normal;		
+}
+/*
+.colonne li:hover {
+	background-color: #f5f5f5;		
+}*/
+/*
+.colonne li .n {
+	clear:left;
+	float:right;		
+}
+*/
+.bobs-table {
+	font-size: 14px;
+}
+
+.bobs-table th {
+	border: 1px solid rgb(198,229,72);
+	background-color: rgb(198,229,72);
+	color: white;
+	font-size:16px;
+}
+.bobs-table table {
+	border-collapse: collapse;
+}
+
+.bobs-table td {
+	border: 1px solid rgb(198,229,72);
+}
+
+.bobs-table tr {
+	background-color: white;
+}
+
+.bobs-table tr:hover {
+	background-color: rgb(198,229,72);
+}
+
+#root_liste_villes {
+	text-align: left;	
+}
+
+.liste-ville {
+	float:	left;
+	width: 30%;
+	border: 1px solid black;
+	text-align: left;
+	margin-left: 15px;
+}
+
+.liste-ville-scr {
+	height: 200px;
+	overflow: scroll;
+}
+
+.liste-ville h1 {
+	margin: 0px;
+	padding: 2px;
+	font-size: 20px;
+}
+.liste-ville ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style: none;
+	margin:0px;
+	padding:0px;
+}
+
+.liste-ville li {
+	padding:3px;
+}
+.liste-ville a {
+	display:block;
+}
+.liste-ville a:hover {
+	background-color: #f5f5f5;
+}
+.liste-ville a:visited {
+	color: blue;
+} 
+
+.esp_cache {
+	/* display: none; */
+	font-size: 12px;
+	text-align: right;
+}
+
+.w_info {
+	display:none;
+}
+
+.box {
+	background-color: white;
+	border:solid 2px rgb(198,229,72);
+	margin-top: 20px;
+	margin-left: 280px;
+	padding: 20px;
+}
+
+.bloc  {
+	max-width: 684px;
+	width:48%;
+	height: 160px;	
+	float: left;
+	color: black;
+	font-weight:bold;
+}
+
+.bloc p {
+	margin: 0px;
+	padding: 5px;
+}
+
+.bloc h1 {
+	margin:0px;
+	padding:0px;
+	padding-bottom: 3px;
+	font-size: 24px;
+	border-bottom-style: none;
+}
+
+.bloc-commune {
+	background-image: url('../image/communes.png');
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.bloc-espece {
+	background-image: url('../image/especes.png');
+	background-repeat: no-repeat;
+	background-position: right;
+	margin-left: 10px;
+}
+
+.bloc-carte-communes {
+	background-image: url('../image/carte_communes.png');
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.bloc-carte-communes a {
+	display: block;
+	margin-left: 120px;
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+.bloc-commune-cont {
+	margin-left: 120px;
+	height: 160px;
+}
+
+.definitions table {
+	border-collapse:collapse;
+	width:80%;
+	margin-left:10%;	
+}
+.definitions td {
+	border: solid 1px black;
+	padding: 5px;
+	vertical-align: top;
+}
+
+.b-a-menu {
+	padding:8px;
+	clear:both; 
+	background-color: rgb(70,63,50);
+}
+.b-a-menu ul {
+	margin: 0px;
+	list-style-type: none;
+	padding: 0px;
+}
+.b-a-menu li {
+	display:inline;
+	background-color: rgb(224,224,224);
+	padding: 3px;
+}
+.b-a-menu a {
+	font-weight: bold;
+	color: black;
+}
+.b-a-menu a:hover {
+	text-decoration: none;
+}
+
+.b-a-menu li:hover {
+	background-color: white;
+}
+h1.titre_liste_rouge {
+	padding: 5px; 
+	background-color: rgb(198,229,72); 
+	color:white;
+}
+
+div.info_liste_rouge {
+	float: right;
+	padding: 8px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgb(198,229,72);
+	width: 230px;
+}
+
+.legende {
+	display:block;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+	font-weight: bold;
+	color: white;
+}
+   
+div.pas_de_carte_dispo {
+	height:100%;
+	width:100%;
+	float:right;
+	border-style:solid;
+	border-width:2px;
+	padding: 10px;
+	margin-left:10px;
+	border-color:rgb(198,229,72);
+	background-color:white;
+}
+
+.ui-widget {
+	font-size: 0.8em;
+	text-align: left;
+}
+
+/* le compteur sur la page partenaires */
+.compteur {
+	background-color: black;
+	color: white;
+	padding:3px;
+	font-family: monospace;
+	font-weight: bold;
+	font-size: larger;
+}
+
+/* les photos qui défilent sur la fiche espèce */
+.carousel ul, .carousel li {
+	margin:0;
+	height: 187px;
+	max-height: 187px;
+	overflow: hidden;
+	list-style:none;
+	padding:0px;
+}
+
+.carousel li {
+	float:left;
+	margin:0px;
+	padding:0px;
+}
+
+/* liste d'espèces - liste rouge */
+.esp {
+	padding-bottom: 6px;
+	width: 25%;
+	min-height: 60px;
+	margin: 10px;
+	float: left;
+	padding: 5px;
+	border: solid 3px rgb(198,229,72);
+	background-color: white;
+	border-radius: 0em 2em;	
+	-moz-border-radius: 0 2em;
+	-webkit-border-radius: 0 25px 0px 25px;
+}
+
+.esp:hover {
+	background-color: #f0f0f0;
+}
+.esp a {
+	display:block;
+}
+.esp a:hover {
+	text-decoration: none;
+}
+
+.lr_statut {
+	font-size:larger;
+	font-weight:bold;
+	float:right;
+	cursor:pointer;
+	padding:5px;
+}
+
+.tvilles table {
+	border-collapse:collapse;
+	border-style:solid;
+	border-color:rgb(198,229,72);
+	border-width:1px;
+	width:100%;
+}
+.tvilles th {
+	background-color:rgb(198,229,72);
+	color:white;
+}
+.tvilles td  {
+	vertical-align:top;	
+	overflow:scroll;
+	padding:2px;
+	background-color:white;
+}
+.tvilles_z  {
+	height:400px;
+	overflow:scroll; 	
+}
+
+.desc {
+	margin-left: 4px;
+}
+/*
+.desc h1 {
+	margin: 0px;
+	background-color: rgb(198,229,72);
+	color: white;
+	font-size: 16px;
+	padding: 4px;
+}
+.desc p {
+	margin: 0px;
+	margin-bottom: 4px;
+	background-color: white;
+	padding: 15px;
+	border-style: solid;
+	border-width: 1px;
+	border-top-style: none;
+	
+	border-color: rgb(198,229,72);
+	font-size: 14px;
+}
+*/
+

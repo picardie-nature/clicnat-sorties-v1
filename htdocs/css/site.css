@@ -1,0 +1,165 @@
+
+li.nbanniere_li > a {
+	opacity: 1;
+	color: white;
+	background-color:  rgb(121,37,120);
+	padding: 2px;
+	margin-left:2px;
+}
+
+a, a:visited {
+	color:  rgb(121,37,120);
+}
+
+h1, h2 {
+	margin-top: 0px;
+	border-bottom-style: solid;
+	border-bottom-color: rgb(121,37,120);
+	border-bottom-width: 3px;
+}
+
+.pn_main, div#bloc-bas {
+	background-color: rgb(220,222,225);
+}
+
+div#b-bas-2 {
+	background: rgb(121,37,120);
+}
+
+div#banniere2 {
+	padding-left: 5px;
+	padding-top: 150px;
+	height: 30px;
+	background-image: none;
+	/*background-image: url('../image/banniere_fond.png');
+	background-repeat: repeat-x;*/
+}
+
+span#b-bas-eas {
+	background: rgb(121,37,120);
+}
+
+.bobs-demi {
+    background-color: white;
+    border-color: rgb(198,229,72);
+    border-style: solid;
+    border-width: 2px;
+    float: left;
+    height: 250px;
+    margin: 0.125%;
+    max-height: 250px;
+    width: 49%;
+}
+
+.bobs-info {
+    background-color: white;
+    border-color: rgb(198,229,72);
+    border-style: solid;
+    border-width: 2px;
+    margin: 0.250%;
+    padding: 15px;
+}
+
+
+.bobs-demi-titre, .bobs-entier-titre {
+    background-color: rgb(198,229,72);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    height: 30px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.bobs-demi-interieur, .bobs-entier-interieur {
+    font-size: 12px;
+    height: 220px;
+    max-height: 220px;
+    overflow: auto;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.bobs-entier {
+    background-color: white;
+    border-color: rgb(198,229,72);
+    border-style: solid;
+    border-width: 2px;
+    float: left;
+    height: 250px;
+    margin: 3px;
+    width: 98.5%;
+}
+
+#bobs-saisie-citations 
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#bobs-saisie-citations li 
+{
+	margin: 3px 3px 3px 0px;
+	padding: 0px;
+	float: left;
+	width: 300px;
+	height: 200px;
+	overflow: auto;
+	border-style: solid;
+	border-width: 1px 2px 2px 2px;
+	border-color: rgb(198,229,72);
+	background-color:white;
+}
+#bobs-saisie-citations h1
+{
+	margin: 0px;
+	padding: 2px;
+	font-size: 1.1em;
+	font-weight: normal;
+	background-color: rgb(198,229,72);
+	color: #fff;
+}
+
+#bobs-saisie-citations h2
+{
+	margin: 0px;
+	padding: 2px;
+	padding-left: 6px;
+	font-size: 0.6em;
+	background-color: rgb(198,229,72);
+	color: #fff;
+}
+
+#bobs-saisie-citations a 
+{
+	background-color: rgb(198,229,72);
+	color:white;
+	text-decoration:none;
+	border-width: 1px;
+	border-style: solid;
+	border-color: rgb(198,229,72);
+}
+
+#bobs-saisie-citations a:hover
+{
+	background-color: white;
+	color: rgb(198,229,72);
+}
+
+.bobs-saisie-citations-tag 
+{
+	color: white;
+	background-color: #d99da4;
+	margin-bottom: 1px;
+}
+.ui-widget {
+	font-size: 0.8em;
+}
+
+.item_sortie {
+	background-color: white;
+	font-size: 0.8em;
+	padding: 5px;
+	margin: 3px;
+}

@@ -19,7 +19,7 @@ $db = false;
 function spip_connect_db($host, $port, $user, $passwd, $dbname, $type_db, $prefix) {
 	// pas vérifié params port et prefix
 	global $db;
-	$db = new PDO("mysql:host=$host;dbname=$dbname", $user, $passwd, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+	$db = new PDO("mysql:host=$host;dbname=$dbname", $user, $passwd);
 }
 
 require_once(CHEMIN_CONF_SPIP);
@@ -68,11 +68,13 @@ foreach (array_keys($data) as $k) {
 				`accessible_mobilite_reduite` INTEGER,
 				`accessible_deficient_auditif` INTEGER,
 				`accessible_deficient_visuel` INTEGER,
-				`structure` VARCHAR(255), `pole` INTEGER,
+				`structure` VARCHAR(255),
+				`pole` INTEGER,
 				`id_sortie_reseau` INTEGER,
 				`id_sortie_type` INTEGER,
 				`id_sortie_public` INTEGER,
-				`id_sortie_cadre` INTEGER
+				`id_sortie_cadre` INTEGER,
+				`id_sortie_pole` INTEGER
 			)";
 			$sql[] = "CREATE TABLE IF NOT EXISTS `sortie_materiel_l` (
 					id_sortie INTEGER,
@@ -94,9 +96,23 @@ foreach (array_keys($data) as $k) {
 					sd.etat,
 					sd.inscription_prealable,
 					sd.inscription_date_limite,
-					sd.inscription_participants_max,s.*
+					sd.inscription_participants_max,
+					date(sd.date_sortie) as date_sortie,
+					date_sortie as date_heure_sortie,
+					s.*
 				FROM sortie_date sd,sorties s
 				WHERE sd.id_sortie=s.id_sortie";
+			$sql[] = "CREATE OR REPLACE VIEW `sortie_dates_resum_v` AS
+				SELECT
+					date(sd.date_sortie) as date_sortie,
+					count(*) as n,
+					sp.libelle,
+					s.pole
+				FROM  sortie_date sd, sorties s,sortie_pole sp
+				WHERE sd.id_sortie=s.id_sortie
+				AND sp.id_sortie_pole=s.pole
+				AND sd.etat = 3
+				GROUP BY date(sd.date_sortie), sp.libelle,sp.id_sortie_pole";
 			foreach ($data[$k] as $entry) {
 				$id_sortie = $entry['id_sortie'];
 				$sql_vars = array();

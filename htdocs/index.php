@@ -299,7 +299,10 @@ class Sortie extends clicnat_smarty {
 	}
 
 	public function before_export_json() {
-		if ($_POST['key'] != 'LesPetitsOiseauxGazouillent') {
+		if (!defined('SORTIES_EXPORT_SECRET')) {
+			throw new Exception('définir SORTIES_EXPORT_SECRET dans le fichier de configuration');
+		}
+		if ($_POST['key'] != SORTIES_EXPORT_SECRET) {
 			die('Restricted access');
 		}
 		if (isset($_POST['datedeb'])) {
@@ -324,7 +327,6 @@ class Sortie extends clicnat_smarty {
 		$output_sorties = array();
 		foreach ($sorties as $s) {
 			$date_s_fin = $s->derniere_date()->date_sortie;
-#			print "( $date_s_fin , $datedeb )\n";
 			$point = $s->point();
 			$departement = $point->get_departement();
 			if (!$dateall and ($date_s_fin >= $datedeb)) {
@@ -341,17 +343,6 @@ class Sortie extends clicnat_smarty {
 							$k = str_replace('orga_', '', $c);
 							$v = $s->$k;
 							break;
-				/*
-						case 'sortie_type':
-							$v = $s->type_sortie();
-							break;
-						case 'sortie_public':
-							$v = $s->public_sortie();
-							break;
-						case 'sortie_cadre':
-							$v = $s->cadre_sortie();
-							break;
-				*/
 						case 'date_sortie':
 							$s_dates = $s->dates();
 							$v = array();
@@ -395,13 +386,18 @@ class Sortie extends clicnat_smarty {
 						case 'commune':
 							$v = '';
 							$commune = $point->get_commune();
-							if ($commune) $val = $commune->nom2;
+							if ($commune) $v = $commune->nom2;
 							if (empty($v)) $v = '.';
 							break;
 						case 'departement':
-							$val = $departement ? $departement->reference : '';
+							$commune = $point->get_commune();
+							$v = $commune ? $commune->get_dept() : '';
 							break;
-
+						case 'accessible_mobilite_reduite':
+						case 'accessible_deficient_auditif':
+						case 'accessible_deficient_visuel':
+							$v = $s->$c?1:0;
+							break;
 						case 'date_sortie_en':
 						case 'pole_n':
 						case 'reseau_sortie_n':

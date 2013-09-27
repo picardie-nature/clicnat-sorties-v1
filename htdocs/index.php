@@ -390,19 +390,14 @@ class Sortie extends clicnat_smarty {
 							if (empty($v)) $v = '.';
 							break;
 						case 'departement':
-							$departement = $point->get_departement();
-							$v = $departement ? $departement->reference : '';
+							$commune = $point->get_commune();
+							$v = $commune ? $commune->get_dept() : '';
 							break;
 						case 'accessible_mobilite_reduite':
-							$v = $s->accessible_mobilite_reduite == true;
-							break;
 						case 'accessible_deficient_auditif':
-							$v = $s->accessible_deficient_auditif == true;
-							break;
 						case 'accessible_deficient_visuel':
-							$v = $s->accessible_deficient_visuel == true;
+							$v = $s->$c?1:0;
 							break;
-
 						case 'date_sortie_en':
 						case 'pole_n':
 						case 'reseau_sortie_n':

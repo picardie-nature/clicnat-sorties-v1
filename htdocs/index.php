@@ -386,7 +386,7 @@ class Sortie extends clicnat_smarty {
 						case 'commune':
 							$v = '';
 							$commune = $point->get_commune();
-							if ($commune) $val = $commune->nom2;
+							if ($commune) $v = $commune->nom2;
 							if (empty($v)) $v = '.';
 							break;
 						case 'departement':

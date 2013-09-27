@@ -390,7 +390,17 @@ class Sortie extends clicnat_smarty {
 							if (empty($v)) $v = '.';
 							break;
 						case 'departement':
-							$val = $departement ? $departement->reference : '';
+							$departement = $point->get_departement();
+							$v = $departement ? $departement->reference : '';
+							break;
+						case 'accessible_mobilite_reduite':
+							$v = $s->accessible_mobilite_reduite == true;
+							break;
+						case 'accessible_deficient_auditif':
+							$v = $s->accessible_deficient_auditif == true;
+							break;
+						case 'accessible_deficient_visuel':
+							$v = $s->accessible_deficient_visuel == true;
 							break;
 
 						case 'date_sortie_en':

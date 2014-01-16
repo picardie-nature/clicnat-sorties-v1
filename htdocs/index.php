@@ -35,7 +35,7 @@ class ExceptionErrAuth extends Exception {}
 class ExceptionReglement extends Exception {}
 
 class Sortie extends clicnat_smarty {
-	const admins = '2204,2819,2109,2033,3021,3102,3230,3224';
+	const admins = '2204,2819,2109,2033,3021,3102,3230,3224,1001';
 
 	private function is_admin($id) {
 		$admins = explode(',', self::admins);

@@ -14,6 +14,10 @@
 	<textarea style="width:100%; height:10em;">{$doc->illustrations()}</textarea>
 </fieldset>
 <fieldset>
+	<legend>Activités par cellule de la carte</legend>
+	<textarea style="width:100%; height:10em;">{$doc->sorties_par_cellule()}</textarea>
+</fieldset>
+<fieldset>
 	<legend>GeoJSON</legend>
 	<textarea style="width:100%; height:10em;">{$doc->geojson()}</textarea>
 </fieldset>

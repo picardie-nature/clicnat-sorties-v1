@@ -5,8 +5,11 @@
  **/
 
 $start_time = microtime(true);
-define('CONFIG_FILE', '/etc/baseobs/config.php');
-//define('CONFIG_FILE', '/home/domi/etc/baseobs/config.php');
+
+if (file_exists('config.php')) 
+	define('CONFIG_FILE', 'config.php');
+else
+	define('CONFIG_FILE', '/etc/baseobs/config.php');
 
 if (!file_exists(CONFIG_FILE))
 	die('Ne peut ouvrir le fichier de configuration '.CONFIG_FILE);

@@ -413,7 +413,9 @@ class Sortie extends clicnat_smarty {
 						case 'etat':
 							$v = '--skip--';
 							break;
-
+						case 'gestion_picnat':
+							$v = $s->gestion_picnat == 't'?1:0;
+							break;
 						default:
 							if (preg_match('/^id_/', $c)) {
 								$v = intval($s->$c);

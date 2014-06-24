@@ -645,7 +645,22 @@ class Sortie extends clicnat_smarty {
 		$date = $sortie->date_par_timestamp((int)$_GET['date']);
 		$this->assign_by_ref('sortie', $sortie);
 		$this->assign_by_ref('date', $date);
+	}
 
+	function before_www_liste() {
+		if (!isset($_GET['datedeb']))
+			$deb = strftime("%Y-%m-%d");
+		else
+			$deb = strftime("%Y-%m-%d", strtotime($_GET['datedeb']));
+
+		if (!isset($_GET['njours']))
+			$njours = 90;
+		else
+			$njours = (int)$_GET['njours'];
+
+		$fin = strftime("%Y-%m-%d", strtotime($deb)+86400*$njours);
+
+		$this->assign_by_ref("dates", clicnat_sortie_date::periode($this->db, $deb, $fin));
 	}
 
 	function authok() {	
@@ -655,7 +670,7 @@ class Sortie extends clicnat_smarty {
 	public function display() {
 		global $start_time;
 		$this->session();
-		$noauth_templates = array ('accueil', 'export_json');
+		$noauth_templates = array ('accueil', 'export_json','www_liste');
 		try {
 			$tpl = $this->template();
 			if ( !(in_array ($tpl, $noauth_templates)) || ($_SESSION[SESS]['auth_ok'] == true) ) {

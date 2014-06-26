@@ -482,7 +482,11 @@ class Sortie extends clicnat_smarty {
 						if ($start > 0) {
 							$var = substr($var, $start+1);
 						}
-						$html .= $sortie->__get($var);
+						if ($var != 'description') {
+							$html .= $sortie->__get($var);
+						} else {
+							$html .= clicnat_markdown_txt($sortie->__get($var));
+						}
 						$state = 'template';
 					} else {
 						throw new Exception("erreur invalide } @ car $i");

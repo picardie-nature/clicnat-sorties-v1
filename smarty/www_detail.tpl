@@ -1,6 +1,13 @@
+
 <div class="container-fluid">
 <div class="row">
 	<div class="col-md-10">
+		{foreach from=$sortie->dates() item=__sortie_date}
+			{if $__sortie_date->date_sortie eq $date_sel}
+				{assign var=sortie_date value=$__sortie_date}
+			{/if}
+		{/foreach}
+
 		<div class="pull-right">
 			{if $sortie->accessible_mobilite_reduite}
 				<img src="http://sorties.picardie-nature.org/image/mobilite_reduite_1.png" alt="Accessible aux personnes à mobilité réduite">
@@ -13,7 +20,11 @@
 		</div>
 
 		<h1>{$sortie}</h1>
-		{if $sortie->etat == 4}<h3>Sortie annulée</h3>{/if}
+		<!--
+		{if $sortie_date->etat == 4}
+			<h3 class="pull-right"><span class="label label-danger">Sortie annulée</span></h3>
+		{/if}
+		-->
 		<p>{$sortie->description|markdown}</p>
 		<p>Durée : {$sortie->duree_lib}</p>
 		<p>Rendez-vous : {$sortie->description_lieu}</p>
@@ -67,15 +78,17 @@
 		{/if}
 	</div>
 	<div class="col-md-2">
-		<h2>Dates</h2>
 		{assign var=date_min value=$date_sel|strtotime}
 		{assign var=date_min value=$date_min-86400*5}
-		{assign var=dates value=$sortie->dates(2)}
-		<ul class="list-group text-center">
+		{assign var=dates value=$sortie->dates(1)}
+		<ul class="list-group">
 		{foreach from=$dates item=date}
 			{assign var=_date value=$date->date_sortie|strtotime}
 			{if $_date > $date_min}
-				 <li class="list-group-item {if $date_sel eq $date->date_sortie}active{/if} center">{$date->date_sortie|date_format:"%A<br><b>%e</b><br> %B<br> à %Hh%M "}</li>
+				 <li class="list-group-item text-center
+				 	{if $date_sel eq $date->date_sortie}active{/if}"> {$date->date_sortie|date_format:"%A<br><b>%e</b><br> %B<br> à %Hh%M "}
+					{if $date->etat eq 4}<span class="label label-danger">annulée</span>{/if}
+				</li>
 			{/if}		 
 		{/foreach}
 		</ul>

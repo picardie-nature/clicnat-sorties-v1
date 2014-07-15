@@ -701,6 +701,12 @@ class Sortie extends clicnat_smarty {
 		$this->assign_by_ref("dates", $dates);
 	}
 
+	function before_www_detail() {
+		$sortie = new clicnat_sortie($this->db, $_GET['id_sortie']);
+		$this->assign("date_sel", $_GET['date']);
+		$this->assign_by_ref("sortie", $sortie);
+	}
+
 	function authok() {	
 		return $_SESSION[SESS]['auth_ok'] == true;
 	}
@@ -708,7 +714,7 @@ class Sortie extends clicnat_smarty {
 	public function display() {
 		global $start_time;
 		$this->session();
-		$noauth_templates = array ('accueil', 'export_json','www_liste');
+		$noauth_templates = array ('accueil', 'export_json','www_liste','www_detail');
 		try {
 			$tpl = $this->template();
 			if ( !(in_array ($tpl, $noauth_templates)) || ($_SESSION[SESS]['auth_ok'] == true) ) {

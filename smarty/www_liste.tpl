@@ -13,6 +13,7 @@
 		</div>
 		<div class="panel-body">
 			<p>{$sortie->description|markdown}</p>
+			<a class="btn btn-default" href="?page=sortie_detail&id_sortie={$sortie->id_sortie}&date={$date->date_sortie|urlencode}">Plus d'informations sur cette activitée</a>
 		</div>
 		<div class="panel-footer">
 			{$date->date_sortie|date_format:"%A %e %B à %Hh%M"}
@@ -32,7 +33,5 @@
 			<div class="clearfix"></div>
 		</div>
 	</div>
-	{else}
-		etat : {$date->etat}
 	{/if}
 {/foreach}

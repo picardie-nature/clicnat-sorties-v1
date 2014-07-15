@@ -681,12 +681,23 @@ class Sortie extends clicnat_smarty {
 		if (isset($_GET['id_reseau'])) {
 			$old_dates = $dates;
 			$dates = array();
-			foreach ($old_dates as $k=>$date) {
+			foreach ($old_dates as $date) {
 				if ($date->sortie->id_sortie_reseau == $_GET['id_reseau'])
 					$dates[] = $date;
 			}
 		}
-		
+		if (isset($_GET['id_commune'])) {
+			$_commune = new bobs_espace_commune($this->db, (int)$_GET['id_commune']);
+			$this->assign_by_ref('commune', $_commune);
+			$old_dates = $dates;
+			$dates = array();
+			foreach ($old_dates as $date) {
+				$commune = $date->sortie->point()->get_commune();
+				if ($commune)
+					if ($commune->id_espace == $_GET['id_commune'])
+						$dates[] = $date;
+			}
+		}
 		$this->assign_by_ref("dates", $dates);
 	}
 

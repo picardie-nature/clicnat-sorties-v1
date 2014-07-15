@@ -1,4 +1,5 @@
 {$dates|@count} activités
+{if $commune} sur la commune de {$commune}{/if}
 {foreach from=$dates item=date}
 	{if $date->etat > 2}
 	{assign var=sortie value=$date->sortie}
@@ -24,7 +25,7 @@
 					</button>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="http://obs.picardie-nature.org/?page=commune&id={$commune->id_espace}">Fiche Clicnat de la commune</a></li>
-						<li><a href="#">Toutes les activités sur cette commune</a></li>
+						<li><a href="?rubrique57&id_commune={$commune->id_espace}">Toutes les activités sur cette commune</a></li>
 					</ul>
 				</div>
 			{/if}

@@ -657,14 +657,37 @@ class Sortie extends clicnat_smarty {
 		else
 			$deb = strftime("%Y-%m-%d", strtotime($_GET['datedeb']));
 
-		if (!isset($_GET['njours']))
-			$njours = 90;
-		else
-			$njours = (int)$_GET['njours'];
+		if (!isset($_GET['datefin'])) {
+			if (!isset($_GET['njours'])) 
+				$njours = 90;
+			else
+				$njours = (int)$_GET['njours'];
+			$fin = strftime("%Y-%m-%d", strtotime($deb)+86400*$njours);
+		} else {
+			$fin = strftime("%Y-%m-%d", strtotime($_GET['datefin']));
+		}
 
-		$fin = strftime("%Y-%m-%d", strtotime($deb)+86400*$njours);
+		$dates = $dates_sorties = clicnat_sortie_date::periode($this->db, $deb, $fin);
 
-		$this->assign_by_ref("dates", clicnat_sortie_date::periode($this->db, $deb, $fin));
+		if (isset($_GET['id_pole'])) {
+			$dates = array();
+			foreach ($dates_sorties as $date) {
+				if ($date->sortie->id_sortie_pole == $_GET['id_pole'])
+					$dates[] = $date;
+			}
+		} else {
+			$dates = $dates_sorties;
+		}
+		if (isset($_GET['id_reseau'])) {
+			$old_dates = $dates;
+			$dates = array();
+			foreach ($old_dates as $k=>$date) {
+				if ($date->sortie->id_sortie_reseau == $_GET['id_reseau'])
+					$dates[] = $date;
+			}
+		}
+		
+		$this->assign_by_ref("dates", $dates);
 	}
 
 	function authok() {	

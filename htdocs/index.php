@@ -686,6 +686,15 @@ class Sortie extends clicnat_smarty {
 					$dates[] = $date;
 			}
 		}
+		if (isset($_GET['id_cadre'])) {
+			$old_dates = $dates;
+			$dates = array();
+			foreach ($old_dates as $date) {
+				if ($date->sortie->id_sortie_cadre == $_GET['id_cadre'])
+					$dates[] = $date;
+			}
+			
+		}
 		if (isset($_GET['id_commune'])) {
 			$_commune = new bobs_espace_commune($this->db, (int)$_GET['id_commune']);
 			$this->assign_by_ref('commune', $_commune);

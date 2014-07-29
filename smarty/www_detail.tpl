@@ -28,13 +28,14 @@
 		<p>{$sortie->description|markdown}</p>
 		<p>Durée : {$sortie->duree_lib}</p>
 		<p>Rendez-vous : {$sortie->description_lieu}</p>
+		{if $sortie_date->inscription_prealable}
 		<p>Sur inscription :
-		{if $sortie->inscription}
 			{if $sortie->gestion_picnat}
 				Picardie Nature 03.62.72.22.54 - decouverte@picardie-nature.org
 			{else}
 				{if $sortie->portable}{$sortie->portable}{else}{$sortie->tel}{/if}
 			{/if}
+		</p>
 		{/if}
 		<p>Matériel :
 		<ul>

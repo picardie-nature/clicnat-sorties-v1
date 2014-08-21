@@ -716,6 +716,20 @@ class Sortie extends clicnat_smarty {
 		$this->assign_by_ref("sortie", $sortie);
 	}
 
+	function before_json_sortie() {
+		$sortie = new clicnat_sortie($this->db, $_GET['id_sortie']);
+		$output = array(
+			"nom" => $sortie->nom,
+			"description" => $sortie->description,
+			"description_lieu" => $sortie->description_lieu,
+			"accessible_mobilite_reduite" => $sortie->accessible_mobilite_reduite,
+			"accessible_deficient_auditif" => $sortie->accessible_deficient_auditif,
+			"accessible_deficient_visuel" => $sortie->accessible_deficient_visuel
+		);
+		echo json_encode($output);
+		exit();
+	}
+
 	function authok() {	
 		return $_SESSION[SESS]['auth_ok'] == true;
 	}
@@ -723,7 +737,7 @@ class Sortie extends clicnat_smarty {
 	public function display() {
 		global $start_time;
 		$this->session();
-		$noauth_templates = array ('accueil', 'export_json','www_liste','www_detail');
+		$noauth_templates = array ('accueil', 'export_json','www_liste','www_detail','json_sortie');
 		try {
 			$tpl = $this->template();
 			if ( !(in_array ($tpl, $noauth_templates)) || ($_SESSION[SESS]['auth_ok'] == true) ) {

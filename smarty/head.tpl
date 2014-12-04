@@ -13,12 +13,11 @@
 </head>
 <body>
 {if $usemap}
-<script src="http://deco.picardie-nature.org/openlayers/OpenLayers.js" language="javascript"></script>
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key={$google_key}" type="text/javascript"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={$google_key}&sensor=false" type="text/javascript"></script>
 <script src="http://deco.picardie-nature.org/proj4js/lib/proj4js-compressed.js" language="javascript"></script>
 <script src="js/carte.js" language="javascript"></script>
 {/if}
-<script src="js/utils.js" language="javascript"></script>
 <script src="http://deco.picardie-nature.org/jquery/js/jquery-1.7.1.min.js" language="javascript"></script>
 <script src="http://deco.picardie-nature.org/jquery/js/jquery-ui-1.8.2.custom.min.js" language="javascript"></script>
 <script src="http://deco.picardie-nature.org/jquery/js/jquery.ui.datepicker-fr.js" language="javascript"></script>

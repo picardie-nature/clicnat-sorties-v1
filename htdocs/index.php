@@ -639,8 +639,12 @@ class Sortie extends clicnat_smarty {
 				
 				$h = (int)$_POST['date_sortie_h'];
 				$m = (int)$_POST['date_sortie_m'];
-				$new_date = ((int)strtotime(strftime("%Y-%m-%d", strtotime($date->date_sortie))))+3600*$h+60*$m;
-				$date->update_field('date_sortie', strftime("%Y-%m-%d %H:%M:00", $new_date));
+
+				$new_date = new DateTime();
+				list($y,$mo,$d) = explode("-",$date->date_sortie);
+				$new_date->setDate($y,$mo,$d);
+				$new_date->setTime($h, $m);
+				$date->update_field('date_sortie', $new_date->format("Y-m-d H:i:s"));
 				$this->redirect("?t=editer_suiv&id_sortie={$sortie->id_sortie}");
 			}
 		}

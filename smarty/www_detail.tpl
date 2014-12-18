@@ -89,7 +89,7 @@
 			{if $_date > $date_min}
 				{if $date->etat >= 3}
 				 <li class="list-group-item text-center
-				 	{if $date_sel eq $date->date_sortie}active{/if}"> {$date->date_sortie|date_format:"%A<br><b>%e</b><br> %B<br> à %Hh%M "}
+				 	{if $date_sel eq $date->date_sortie}active{/if}"> {$date->date_sortie|date_format:"%A<br><b>%e</b><br>%Y<br> %B<br> à %Hh%M "}
 					{if $date->etat eq 4}<span class="label label-danger">annulée</span>{/if}
 				</li>
 				{/if}

@@ -105,7 +105,7 @@ function marqueur_est_visible(layer) {
 
 function selection_commune(id_espace) {
 	var url = '?t=json&a=commune&id='+id_espace;
-	$('srch_commune').value = '';
+	J('srch_commune').value = '';
 	new J.ajax({
 		url: '?'+J.param({
 			t: 'commune_gml',

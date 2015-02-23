@@ -59,11 +59,10 @@ function layer_marqueur_ajouter_icone(layer, point, image, width, height)
 
 function carte_inserer(imap) {
 	var options = {
-		projection: new OpenLayers.Projection('EPSG:102113'),
+		projection: new OpenLayers.Projection('EPSG:900913'),
 		displayProjection: new OpenLayers.Projection('EPSG:4326'),
 		units: "m",
-		numZoomLevel: 18,
-		maxResolution: 156543.0339,
+		numZoomLevels: 20,
 		maxExtent: new OpenLayers.Bounds(-20037508, -20037508, 20037508, 20037508.34)
 	};
 	imap = new OpenLayers.Map(imap.id, options);

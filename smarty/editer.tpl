@@ -189,7 +189,6 @@
 	var z = 8;
 	m.setCenter(pt, z);
 	m.events.register('click', null, function (e) {
-		console.log(m);
 		var pt = e.object.getLonLatFromViewPortPx(e.xy);
 		pt.transform(e.object.projection, e.object.displayProjection);
 		J('#x').val(pt.lon);

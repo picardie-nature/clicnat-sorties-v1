@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
 <head>
 	<title>{$titre_page}</title>
-	<link href="http://deco.picardie-nature.org/jquery/css/redmond/jquery-ui-1.8.2.custom.css" media="all" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/redmond/jquery-ui.css" />
 	<link href="css/site_v2_commun.css" media="all" rel="stylesheet" type="text/css"/>
 	<link href="css/site.css" media="all" rel="stylesheet" type="text/css"/>
 	{if $usedatatable}
@@ -14,12 +14,12 @@
 <body>
 {if $usemap}
 <script src="//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key={$google_key}&sensor=false" type="text/javascript"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true&v=3&key={$google_key}"></script>
 <script src="http://deco.picardie-nature.org/proj4js/lib/proj4js-compressed.js" language="javascript"></script>
 <script src="js/carte.js" language="javascript"></script>
 {/if}
-<script src="http://deco.picardie-nature.org/jquery/js/jquery-1.7.1.min.js" language="javascript"></script>
-<script src="http://deco.picardie-nature.org/jquery/js/jquery-ui-1.8.2.custom.min.js" language="javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> 
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <script src="http://deco.picardie-nature.org/jquery/js/jquery.ui.datepicker-fr.js" language="javascript"></script>
 <script>
 

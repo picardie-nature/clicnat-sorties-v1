@@ -27,6 +27,8 @@ require_once(OBS_DIR.'smarty.php');
 require_once(OBS_DIR.'utilisateur.php');
 require_once(OBS_DIR.'espace.php');
 require_once(OBS_DIR.'sorties.php');
+require_once(OBS_DIR.'textes.php');
+require_once(OBS_DIR.'template.php');
 
 // On ne veut pas de notices dans les sorties CSV ou XML...
 $_current_err_reporting = error_reporting();
@@ -38,6 +40,8 @@ class ExceptionErrAuth extends Exception {}
 class ExceptionReglement extends Exception {}
 
 class Sortie extends clicnat_smarty {
+	use clicnat_mini_template;
+
 	const admins = '2204,2819,2109,2033,3021,3102,3230,3224,1001,3315';
 
 	private function is_admin($id) {
@@ -203,6 +207,22 @@ class Sortie extends clicnat_smarty {
 		} else if (isset($_GET['ajouter_date'])) {
 			$sortie = new clicnat_sortie($this->db, (int)$_GET['sortie']);
 			$sortie->ajoute_date(bobs_element::date_fr2sql($_POST['date']));
+
+			$message = new clicnat_mail();
+			$message->from('ne-pas-repondre@clicnat.fr');
+			$vars = [
+				"titre" => $sortie->nom,
+				"description" => $sortie->description,
+				"date" => $_POST['date']
+			];
+			$sujet_tpl = clicnat_textes::par_nom(get_db(), 'calendrier/notification_nouvelle_sortie_titre')->texte;
+			$texte_tpl = clicnat_textes::par_nom(get_db(), 'calendrier/notification_nouvelle_sortie')->texte;
+
+			$message->sujet(self::mini_template($sujet_tpl, $vars));
+			$message->message(self::mini_template($texte_tpl, $vars));
+
+			$message->envoi('nicolas.damiens@picardie-nature.org');
+
 			$this->redirect("?t=editer_suiv&id_sortie={$sortie->id_sortie}");
 		}
 		$sortie = new clicnat_sortie($this->db, (int)$_GET['sortie']);

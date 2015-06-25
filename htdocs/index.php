@@ -41,6 +41,7 @@ class ExceptionReglement extends Exception {}
 
 class Sortie extends clicnat_smarty {
 	use clicnat_mini_template;
+	protected $dests_notifications = [];
 
 	const admins = '2204,2819,2109,2033,3021,3102,3230,3224,1001,3315';
 
@@ -54,6 +55,7 @@ class Sortie extends clicnat_smarty {
 		$this->cache_dir = '/tmp/cache_sortie';
 		if (!file_exists('/tmp/cache_sortie')) mkdir('/tmp/cache_sortie');
 		$this->bobs_msgs = array();
+		$this->dests_notifications = ['nicolas.damiens@picardie-nature.org','decouverte@picardie-nature.org'];
 	}
 	
 	private function template($selection_tpl = false) {
@@ -221,7 +223,9 @@ class Sortie extends clicnat_smarty {
 			$message->sujet(self::mini_template($sujet_tpl, $vars));
 			$message->message(self::mini_template($texte_tpl, $vars));
 
-			$message->envoi('nicolas.damiens@picardie-nature.org');
+			foreach ($this->dests_notifications as $dest) {
+				$message->envoi($dest);
+			}
 
 			$this->redirect("?t=editer_suiv&id_sortie={$sortie->id_sortie}");
 		}

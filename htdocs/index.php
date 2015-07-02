@@ -457,7 +457,8 @@ class Sortie extends clicnat_smarty {
 		}
 		$output['sorties'] = $output_sorties;
 		$output_j = json_encode ($output);
-		header ("Content-Length: ". strlen($output_j));
+		header("Content-Length: ". strlen($output_j));
+		header("Access-Control-Allow-Origin: *");
 		echo $output_j;
 		exit();
 	}

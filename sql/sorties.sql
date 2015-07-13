@@ -110,30 +110,14 @@ create table sortie_date (
 	primary key (id_sortie, date_sortie)
 );
 
+drop table sortie_document;
 create table sortie_document (
-	id_sortie_document serial,
-	lib varchar(100),
-	primary key (id_sortie_document)
+	id_sortie integer references sortie(id_sortie),
+	doc_id varchar(13),
+	primary key (id_sortie,doc_id)
 );
 
-insert into sortie_document (lib) values ('calendrier des sorties');
-insert into sortie_document (lib) values (e'lettre d\'infos');
-insert into sortie_document (lib) values ('fly asso');
-insert into sortie_document (lib) values ('rapport activités');
-insert into sortie_document (lib) values ('fly clicnat');
-insert into sortie_document (lib) values ('fly stage naturaliste');
-insert into sortie_document (lib) values ('livret centre de sauvegarde');
-insert into sortie_document (lib) values ('dépliant phoque (fr)');
-insert into sortie_document (lib) values ('dépliant phoque (en)');
-insert into sortie_document (lib) values ('dépliant phoque (nl)');
-insert into sortie_document (lib) values ('fly busards');
-insert into sortie_document (lib) values ('fly sos chauves-souris');
-insert into sortie_document (lib) values ('fly amphibiens');
-insert into sortie_document (lib) values ('fly guide sentinelle');
-insert into sortie_document (lib) values ('guide sentinelle');
-insert into sortie_document (lib) values ('livret jardin sauvage');
-insert into sortie_document (lib) values ('bulletin adhésion');
-
+-- a suuprimer
 create table sortie_date_document (
 	id_sortie integer,
 	date_sortie timestamp,

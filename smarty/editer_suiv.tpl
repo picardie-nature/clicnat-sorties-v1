@@ -36,4 +36,19 @@
 	Vous devez corriger les {$c_bloquant} erreur(s) du cadre ci-dessous <a href="?t=editer&sortie={$sortie->id_sortie}">en retournant sur la fiche</a>.
 {/if}
 </fieldset>
+
+<fieldset>
+	<legend>Photos / Illustration</legend>
+	<fieldset>
+	<form enctype="multipart/form-data" method="post" action="?t=editer_suiv&id_sortie={$sortie->id_sortie}">
+		<input type="hidden" name="url_retour" value="?t=citation&id={$citation->id_citation}"/>
+		<input type="hidden" name="MAX_FILE_SIZE" value="300000000" />
+		<input name="f" type="file" /><br/>
+		<input name="ajoute_photo" type="hidden" value="1">
+		<input type="submit" value="Envoyer"/><br/>
+	</form>
+	{foreach from=$sortie->documents_liste() item=doc}
+		<img src="?t=img250&id={$doc->get_doc_id()}"/>
+	{/foreach}
+</fieldset>
 {include file="foot.tpl"}

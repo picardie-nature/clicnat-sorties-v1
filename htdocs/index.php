@@ -29,6 +29,7 @@ require_once(OBS_DIR.'espace.php');
 require_once(OBS_DIR.'sorties.php');
 require_once(OBS_DIR.'textes.php');
 require_once(OBS_DIR.'template.php');
+require_once(OBS_DIR.'docs.php');
 
 // On ne veut pas de notices dans les sorties CSV ou XML...
 $_current_err_reporting = error_reporting();
@@ -440,6 +441,12 @@ class Sortie extends clicnat_smarty {
 						case 'gestion_picnat':
 							$v = $s->gestion_picnat == 't'?1:0;
 							break;
+						case 'images':
+							$v = [];
+							foreach ($s->documents_liste() as $doc) {
+								$v[] = $doc->get_doc_id();
+							}
+							break;
 						default:
 							if (preg_match('/^id_/', $c)) {
 								$v = intval($s->$c);
@@ -483,10 +490,33 @@ class Sortie extends clicnat_smarty {
 		else
 			$this->assign('admin', false);
 
+		if ($editable) {
+			if (isset($_POST["ajoute_photo"])) {
+				$doc_id = bobs_document::sauve($_FILES['f']);
+				$image = new bobs_document_image($doc_id);
+				$sortie->associer_document($doc_id);
+			}
+		}
+
 		$sortie = new clicnat_sortie($this->db, (int)$_GET['id_sortie']);
 		$this->assign_by_ref('sortie', $sortie);
 	}
 
+	protected function before_img250() {
+		require_once(OBS_DIR.'/docs.php');
+		$im = new bobs_document_image($_GET['id']);
+		self::header_cacheable(86400*10);
+		$im->get_image_redim(250,0);
+		exit();
+	}
+
+	protected function before_img500() {
+		require_once(OBS_DIR.'/docs.php');
+		$im = new bobs_document_image($_GET['id']);
+		self::header_cacheable(86400*10);
+		$im->get_image_redim(500,0);
+		exit();
+	}
 
 	private function __mailing_parser($sortie, $template) {
 		$html = '';

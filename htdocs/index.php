@@ -56,7 +56,7 @@ class Sortie extends clicnat_smarty {
 		$this->cache_dir = '/tmp/cache_sortie';
 		if (!file_exists('/tmp/cache_sortie')) mkdir('/tmp/cache_sortie');
 		$this->bobs_msgs = array();
-		$this->dests_notifications = ['nicolas.damiens@picardie-nature.org','decouverte@picardie-nature.org'];
+		$this->dests_notifications = ['nicolas.damiens@picardie-nature.org','decouverte@picardie-nature.org','thomas.hermant@picardie-nature.org'];
 	}
 	
 	private function template($selection_tpl = false) {

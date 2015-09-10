@@ -5,6 +5,11 @@
 </form>
 </fieldset>
 {if $doc}
+<form method="get" action="index.php">
+	<input type="hidden" name="t" value="fabric"/>
+	<input type="hidden" name="action" value="tableau_pdf"/>
+	<input type="submit" value="Créer le PDF"/>
+</form>
 <fieldset>
 	<legend>Liste des images des personnes</legend>
 	<textarea style="width:100%; height:10em;">{$doc->images_personnes()}</textarea>

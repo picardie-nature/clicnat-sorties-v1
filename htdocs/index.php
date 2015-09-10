@@ -588,9 +588,29 @@ class Sortie extends clicnat_smarty {
 			$doc = new clicnat_doc_sorties();
 			$doc->load($_SESSION['doc_xml']);
 			$this->assign_by_ref('doc', $doc);
+			if (isset($_GET['action'])) {
+				switch ($_GET['action']) {
+					case "tableau_pdf":
+						$fhtml = tempnam("/tmp/", "html-pdf-activite");
+						$fhtml .= '.html';
+						$fpdf = tempnam("/tmp/", "pdf-activite");
+						$fpdf .= '.pdf';
+						$ohtml = fopen($fhtml,'w');
+						fwrite($ohtml, file_get_contents("tableau-pdf-entete.html"));
+						$doc->tableau_html($ohtml);
+						fwrite($ohtml, file_get_contents("tableau-pdf-pied.html"));
+						fclose($ohtml);
+						exec("wkhtmltopdf --page-size A3 -O Landscape --load-error-handling ignore $fhtml $fpdf");
+						echo $fpdf;
+						$this->header_pdf();
+						echo file_get_contents($fpdf);
+						unlink($fpdf);
+						unlink($fhtml);
+						exit();
+						break;
+				}
+			}
 		}
-
-	
 	}
 
 	public function before_mailing() {

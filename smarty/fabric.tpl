@@ -8,6 +8,10 @@
 <form method="get" action="index.php">
 	<input type="hidden" name="t" value="fabric"/>
 	<input type="hidden" name="action" value="tableau_pdf"/>
+	<select name="taille">
+		<option value="A3">A3</option>
+		<option value="A4">A4</option>
+	</select>
 	<input type="submit" value="Créer le PDF"/>
 </form>
 <fieldset>

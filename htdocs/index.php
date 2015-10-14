@@ -590,20 +590,27 @@ class Sortie extends clicnat_smarty {
 			$this->assign_by_ref('doc', $doc);
 			if (isset($_GET['action'])) {
 				switch ($_GET['action']) {
-					case "tableau_pdf":
+				case "tableau_pdf":
+						switch ($_GET['taille']) {
+							case 'A4': $taille = 'A4';
+							case 'A3': $taille = 'A3';
+							default: $taille = 'A4';
+						}
 						$fhtml = tempnam("/tmp/", "html-pdf-activite");
 						$fhtml .= '.html';
 						$fpdf = tempnam("/tmp/", "pdf-activite");
 						$fpdf .= '.pdf';
 						$ohtml = fopen($fhtml,'w');
 						fwrite($ohtml, file_get_contents("tableau-pdf-entete.html"));
+						if ($taille == 'A4')
+							fwrite($ohtml, file_get_contents("tableau-pdf-a4.html"));
+						fwrite($ohtml, file_get_contents("tableau-pdf-tab.html"));
 						$doc->tableau_html($ohtml);
 						fwrite($ohtml, file_get_contents("tableau-pdf-pied.html"));
 						fclose($ohtml);
-						exec("wkhtmltopdf --page-size A3 -O Landscape --load-error-handling ignore $fhtml $fpdf");
-						echo $fpdf;
+						exec("wkhtmltopdf --page-size $taille -O Landscape $fhtml $fpdf");
 						$this->header_pdf();
-						echo file_get_contents($fpdf);
+						readfile($fpdf);
 						unlink($fpdf);
 						unlink($fhtml);
 						exit();

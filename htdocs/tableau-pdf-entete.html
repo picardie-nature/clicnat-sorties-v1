@@ -4,7 +4,8 @@
 	</head>
 	<body>
 	<style>
-		table { border-collapse: collapse; }
+		* { margin: 0px; padding: 0px; }
+		table { border-collapse: collapse; border-spacing: 0px;  }
 		thead { display: table-header-group }
 		tfoot { display: table-row-group }
 		tr { 
@@ -12,9 +13,9 @@
 			width: 100%;
 		}
 		td {
-			border-style: solid;
+			/*border-style: solid;
 			border-color: black;
-			border-width: 1px;
+			border-width: 1px;*/
 			font-size: 12px;
 		}
 
@@ -23,18 +24,26 @@
 			vertical-align: center; 
 			text-align: center;
 			font-weight: bold;
+			background-color: rgb(200,200,200);
 			font-size: 16px;
-			background-color: black;
-			color: white;
+			color: black;
 			padding: 5px;
 			width: 10%;
 		}
-		td.c_description > h5 {
-			background-color: black;
-			color: white;
+		h5 {
+			margin: 0px;
+			padding:0px;
+			display: inline;
+		}
+		.top  {
+			background-color: rgb(200,200,200);
+			color: black;
 			font-size: 14px;
+			margin: 0px;
 			margin-bottom: 3px;
 			padding: 3px;
+			height: 16px;
+			padding: 0px;
 		}
 		td.c_description {
 			vertical-align: top; 
@@ -42,6 +51,9 @@
 		td.c_contact {
 			vertical-align: top; 
 			width: 10%:
+		}
+		td.c_lieu > div {
+			text-align: center;
 		}
 		td.c_lieu {
 			vertical-align: top; 
@@ -52,15 +64,4 @@
 			width: 10%;
 		}
 	</style>
-	<h1>Calendrier des activités de Picardie Nature</h1>
-	<table>
-		<thead>
-			<tr>
-				<td>Date</td>
-				<td>Activité</td>
-				<td>Contact</td>
-				<td>Lieu</td>
-				<td>Matériel</td>
-			</tr>
-		</thead>
-		<tbody>
+

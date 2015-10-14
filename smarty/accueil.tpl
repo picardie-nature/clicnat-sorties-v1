@@ -31,10 +31,10 @@
 		<h1>Tableau de bord</h1>
 		<div style="font-size: 14px;">
 			<div style="float: right; width: 40%; padding: 6px; background-color: white; text-align:justify;">
-				La période de saisie pour le calendrier papier de septembre 2013 à mars 2014 est terminée. Si vous souhaitez proposer une autre activité :
-				vous pouvez la saisir dans le formulaire en ligne (saisie au moins 1 mois avant sa date de réalisation). Si celle-ci est validée,
-				elle sera alors uniquement diffusée sur notre site internet et d'autres outils de communication de l'association en fonction
-				des opportunités. Pour toutes questions, vous pouvez nous contacter à decouverte@picardie-nature.org ou 03 62 72 22 54
+				Vous souhaitez proposer une activité (sortie nature, exposition, conférence, atelier, stand, inventaire collectif) :
+				saissez là dans ce formulaire en ligne (pour des raisons de délais merci de la saisir au moins 1 mois avant sa date de réalisation).
+				Une fois validée, elle sera alors diffusée sur notre site internet et d'autres outils de communication de l'association en fonction
+				des opportunités. Pour toutes questions, contactez-nous à decouverte@picardie-nature.org ou 03 62 72 22 54
 			</div>
 			<p> Vous vous trouvez ici sur l'espace vous permettant de suivre l'évolution des activités que vous envisagez.</p>
 			<p> Tant que le formulaire pour votre activité est incomplet (s'il manque le descriptif, l'horaire...), celle-ci apparaîtra dans l'onglet « Brouillons ». Vous devrez alors enrichir votre formulaire avant que nous le relisions.</p>

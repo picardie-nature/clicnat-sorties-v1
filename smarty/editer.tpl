@@ -75,7 +75,7 @@
 
 	{/if}
 
-	Indications permettant de trouver le lieu de rendez-vous (une phrase) :<br/>
+	Indications permettant de trouver le lieu de rendez-vous (une phrase maximum) :<br/>
 	{if $edit}<textarea style="width:100%; height:120px;" name="description_lieu">{$sortie->description_lieu}</textarea>{else}<b>{$sortie->description_lieu}</b>{/if}<br/>
 </fieldset>
 <fieldset><legend>Description</legend>

@@ -3,6 +3,8 @@
 <head>
 	<title>{$titre_page}</title>
 	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/redmond/jquery-ui.css" />
+	<link rel="stylesheet" href="https://ssl.picardie-nature.org/statique/OpenLayers-2.13.1/theme/default/style.css" />
+	<link rel="stylesheet" href="https://ssl.picardie-nature.org/statique/OpenLayers-2.13.1/theme/default/google.css" />
 	<link href="css/site_v2_commun.css" media="all" rel="stylesheet" type="text/css"/>
 	<link href="css/site.css" media="all" rel="stylesheet" type="text/css"/>
 	{if $usedatatable}
@@ -13,8 +15,8 @@
 </head>
 <body>
 {if $usemap}
-<script src="//cdnjs.cloudflare.com/ajax/libs/openlayers/2.13.1/OpenLayers.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=true&v=3&key={$google_key}"></script>
+<script src="https://ssl.picardie-nature.org/statique/OpenLayers-2.13.1/OpenLayers.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true&v=3.5"></script>
 <script src="http://deco.picardie-nature.org/proj4js/lib/proj4js-compressed.js" language="javascript"></script>
 <script src="js/carte.js" language="javascript"></script>
 {/if}

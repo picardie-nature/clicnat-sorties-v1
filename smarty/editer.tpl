@@ -12,7 +12,7 @@
 	Portable : {if $edit}<input type="text" name="portable" size="10" value="{$sortie->portable}"/>{else}<b>{$sortie->portable}</b>{/if}
 	Mail : {if $edit}<input type="text" name="mail" value="{$sortie->mail}"/>{else}<b>{$sortie->mail}</b>{/if}<br/>
 	<br/>
-	Nom de l'association que vous souhaitez associer à cette activité (autre que Picardie Nature) : {if $edit}<input type="text" style="width:100%;" name="structure" value="{$sortie->structure}"/>{else}<b>{$sortie->structure}</b>{/if}<br/><br/>
+	Indiquez ici le nom de la structure qui coorganise avec vous cette activité (association, commune, autre) : {if $edit}<input type="text" style="width:100%;" name="structure" value="{$sortie->structure}"/>{else}<b>{$sortie->structure}</b>{/if}<br/><br/>
 	Prise en charge des demandes d'inscriptions et de renseignements de la part du public :<br/>
 	{if $edit}
 		<input type="radio" name="gestion_picnat" id="gestion_picnat_a" value="0" {if !$sortie->gestion_picnat}checked=true{/if}/>Par moi (votre portable et email seront diffusés)<br/>

@@ -21,20 +21,20 @@
 		</select>
 	{/if}
 	<br/>
-	<label for="inscription_prealable">Inscription préalable</label>
+	<label for="inscription_prealable">Si inscription préalable, cochez cette case : </label>
 	{if $edit}
 		<input id="inscription_prealable" type="checkbox" name="inscription_prealable" {if $date->inscription_prealable eq true}checked=true{/if} value="1"/><br/>
 	{else}
 		<b>{if $date->inscription_prealable}oui{else}non{/if}</b><br/>
 	{/if}
-	Date limite d'inscription : 
+	Si oui, indiquez date limite d'inscription : : 
 	{if $edit}
 		<input type="text" size="10" name="inscription_date_limite" id="inscription_date_limite" value="{$date->inscription_date_limite|date_format:"%d/%m/%Y"}"/><br/>
 		<script>J('#inscription_date_limite').datepicker();</script>
 	{else}
 		<b>{$date->inscription_date_limite|date_format:"%d/%m/%Y"}</b><br/>
 	{/if}
-	Nombre de participants max :
+	Si oui, indiquez le nombre de participants max :
 	{if $edit}
 		<input type="text" size="3" name="inscription_participants_max" value="{$date->inscription_participants_max}"/><br/>
 	{else}

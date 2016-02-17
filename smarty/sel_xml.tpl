@@ -107,14 +107,19 @@ function sel_all_types() {
 <label class="label-for-check" for="type-{$st.id_sortie_type}">{$st.lib|replace:" ":"&nbsp;"}</label>&nbsp;
 </nobr>
 {/foreach}
+
 <br />
 <a href="#" onClick="return sel_all_types();">s&eacute;lectionner tous</a>
 </span>
 <br/>
-<a href="#" onClick="return set_form_date('1','9','2013','31','3','2014');">Septrembre 2013 - Mars 2014</a>
-| 
-<a href="#" onClick="return set_form_date('1','4','2013','30','9','2013');">Avril 2013 - Septrembre 2013</a>
 
+<span class="field-name">Pays&nbsp;&nbsp;</span>
+<select name="pays">
+	<option value="">Tous</option>
+{foreach from=$liste_pays item=pays}
+	<option value="{$pays->id_pays}">{$pays}</option>
+{/foreach}
+</select>
 </fieldset>
 <fieldset>
 	Format du fichier : 

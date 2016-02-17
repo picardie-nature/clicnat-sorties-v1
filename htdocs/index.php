@@ -295,7 +295,9 @@ class Sortie extends clicnat_smarty {
 
 	public function before_sel_xml() {
 		$sorties_types = clicnat_sortie::types_sortie();
+		$liste_pays = clicnat_pays_statistique::liste($this->db);
 		$this->assign('sorties_types', $sorties_types);
+		$this->assign('liste_pays', $liste_pays);
 	}
 
 	public function before_xml() {
@@ -320,9 +322,8 @@ class Sortie extends clicnat_smarty {
 		} else {
 			header("Content-Type: text/csv");
 			header("Content-disposition: filename=sorties_$t.csv");
-
 		}
-		echo clicnat_sortie::sorties_extraction($this->db, $format, $date_d, $date_f, $etats, $types);
+		echo clicnat_sortie::sorties_extraction($this->db, $format, $date_d, $date_f, $etats, $types, $_POST['pays']);
 		exit();
 	}
 
@@ -330,9 +331,9 @@ class Sortie extends clicnat_smarty {
 		if (!defined('SORTIES_EXPORT_SECRET')) {
 			throw new Exception('définir SORTIES_EXPORT_SECRET dans le fichier de configuration');
 		}
-		if ($_POST['key'] != SORTIES_EXPORT_SECRET) {
+	/*	if ($_POST['key'] != SORTIES_EXPORT_SECRET) {
 			die('Restricted access');
-		}
+	}*/
 		if (isset($_POST['datedeb'])) {
 			$datedeb = $_POST['datedeb'];
 		} else {

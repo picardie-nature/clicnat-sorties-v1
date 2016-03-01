@@ -38,8 +38,9 @@
 </fieldset>
 
 <fieldset>
-	<legend>Photos / Illustration</legend>
+	<legend>Photo / Illustration</legend>
 	<fieldset>
+	<p>Proposez-nous une photo qui permettra d'illustrer les supports de communication en lien avec votre activité.</p>
 	<form enctype="multipart/form-data" method="post" action="?t=editer_suiv&id_sortie={$sortie->id_sortie}">
 		<input type="hidden" name="url_retour" value="?t=citation&id={$citation->id_citation}"/>
 		<input type="hidden" name="MAX_FILE_SIZE" value="300000000" />

@@ -4,7 +4,7 @@
 <small>Fiche créée le {$sortie->date_proposition|date_format:"%d-%m-%Y"} par {$sortie->utilisateur_propose()}</small>
 
 <fieldset><legend>Organisateur</legend>
-	Nom : {if $edit}<input type="text" name="orga_nom" value="{$sortie->orga_nom}"}/>{else}<b>{$sortie->orga_nom}</b>{/if}
+	Nom : {if $edit}<input type="text" name="orga_nom" value="{$sortie->orga_nom}"/>{else}<b>{$sortie->orga_nom}</b>{/if}
 	Prénom : {if $edit}<input type="text" name="orga_prenom" value="{$sortie->orga_prenom}"/>{else}<b>{$sortie->orga_prenom}</b>{/if}<br/>
 	Adresse : <br/>
 	{if $edit}<textarea style="width:100%; height:60px;" name="adresse">{$sortie->adresse}</textarea>{else}<b>{$sortie->adresse}</b>{/if}<br/>
@@ -17,7 +17,6 @@
 	{if $edit}
 		<input type="radio" name="gestion_picnat" id="gestion_picnat_a" value="0" {if !$sortie->gestion_picnat}checked=true{/if}/>Par moi (votre portable et email seront diffusés)<br/>
 		<input type="radio" name="gestion_picnat" id="gestion_picnat" value="1" {if $sortie->gestion_picnat}checked=true{/if}/>Par Picardie Nature
-	</ul>
 	{else}
 		<b>{if $sortie->gestion_picnat}oui{else}non{/if}</b>
 	{/if}<br/>
@@ -181,29 +180,32 @@
 </form>
 <script>
 	{literal}
-	var m = carte_inserer(document.getElementById("map"));
-	var lc = carte_ajout_layer_vecteurs(m, 'Commune');
-	var lm = carte_ajout_layer_marqueurs(m, 'Marqueurs');
-	var pt = new OpenLayers.LonLat(2.80151, 49.69606);
-	pt.transform(m.displayProjection, m.projection);
-	var z = 8;
-	m.setCenter(pt, z);
-	m.events.register('click', null, function (e) {
-		var pt = e.object.getLonLatFromViewPortPx(e.xy);
-		pt.transform(e.object.projection, e.object.displayProjection);
-		J('#x').val(pt.lon);
-		J('#y').val(pt.lat);
-		set_marqueur_pos(m,lm,pt.lon,pt.lat);
-	});
-	init_search_commune();
-	{/literal}
-	{if $sortie->id_espace_point}
-		{assign var=point value=$sortie->point()}
-		var x={$point->get_x()};
-		var y={$point->get_y()};
-		set_marqueur_pos(m,lm,x,y);
-	{/if}
+	function init() {
+		var m = carte_inserer(document.getElementById("map"));
+		var lc = carte_ajout_layer_vecteurs(m, 'Commune');
+		var lm = carte_ajout_layer_marqueurs(m, 'Marqueurs');
+		var pt = new OpenLayers.LonLat(2.80151, 49.69606);
+		pt.transform(m.displayProjection, m.projection);
+		var z = 8;
+		m.setCenter(pt, z);
+		m.events.register('click', null, function (e) {
+			var pt = e.object.getLonLatFromViewPortPx(e.xy);
+			pt.transform(e.object.projection, e.object.displayProjection);
+			J('#x').val(pt.lon);
+			J('#y').val(pt.lat);
+			set_marqueur_pos(m,lm,pt.lon,pt.lat);
+		});
+		init_search_commune();
+		{/literal}
+		{if $sortie->id_espace_point}
+			{assign var=point value=$sortie->point()}
+			var x={$point->get_x()};
+			var y={$point->get_y()};
+			set_marqueur_pos(m,lm,x,y);
+		{/if}
 	//{literal}
+	}
+	J(document).ready(init);
 	function description_longueur() {
 		var l = J('#z_description').val().length;;
 		var t = 'caractère';

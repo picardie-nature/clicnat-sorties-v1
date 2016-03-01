@@ -15,7 +15,7 @@
 </head>
 <body>
 {if $usemap}
-<script src="https://ssl.picardie-nature.org/statique/OpenLayers-2.13.1/OpenLayers.js"></script>
+<script src="https://ssl.picardie-nature.org/statique/OpenLayers-2.master/OpenLayers.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=true&v=3.5"></script>
 <script src="http://deco.picardie-nature.org/proj4js/lib/proj4js-compressed.js" language="javascript"></script>
 <script src="js/carte.js" language="javascript"></script>

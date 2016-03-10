@@ -202,7 +202,9 @@ function Calendrier() {
 	this.carte.addLayer(this.layer_v);
 
 	// btn marker sur les boites activités
-	$('.btn-activite-map').click(function () {
+	$('.btn-activite-map').click(function (e) {
+		e.preventDefault();
+		document.location = '#carte';
 		var x = $(this).attr('data-x');
 		var y = $(this).attr('data-y');
 		var p = ol.proj.transform([parseFloat(x),parseFloat(y)], 'EPSG:4326','EPSG:3857');
@@ -338,7 +340,7 @@ $(document).ready(function () {
 		<div class="panel-body">
 			<span class="activite-desc">{$sortie->description|markdown}</span>
 			{if $point}
-			<a title="placer sur la carte" href="#carte" data-x="{$x}" data-y="{$y}" class="btn-activite-map pull-right" style="font-size:28px; color:black;"><i class="fa fa-map-marker fa-fw"></i></a>
+			<a title="placer sur la carte" href="#" data-x="{$x}" data-y="{$y}" class="btn-activite-map pull-right" style="font-size:28px; color:black;"><i class="fa fa-map-marker fa-fw"></i></a>
 			{/if}
 			<a class="btn btn-default" href="?page=sortie_detail&id_sortie={$sortie->id_sortie}&date={$date->date_sortie|urlencode}">Plus d'informations sur cette activité</a>
 		</div>

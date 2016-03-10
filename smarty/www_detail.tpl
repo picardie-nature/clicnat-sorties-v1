@@ -19,35 +19,44 @@
 			{/if}
 		</div>
 
-		<h1>{$sortie}</h1>
-		<!--
-		{if $sortie_date->etat == 4}
-			<h3 class="pull-right"><span class="label label-danger">Sortie annulée</span></h3>
-		{/if}
-		-->
-		<p>{$sortie->description|markdown}</p>
-		<p>Durée : {$sortie->duree_lib}</p>
-		<p>Rendez-vous : {$sortie->description_lieu}</p>
+		<div class="well">
+			<h1>{$sortie}</h1>
+			<p>{$sortie->description|markdown}</p>
+		</div>
+		<p><b>Activité organisé par :</b> {$orga->prenom} {$orga->nom} {if $sortie->structure}{$sortie->structure}{else}Picardie-Nature{/if}</p>
+		<p><b>Durée :</b> {if $sortie->duree_lib eq "4h00"}demi-journée{else}{if $sortie->duree_lib eq "7h00"}journée{else}{$sortie->duree_lib}{/if}{/if}</p>
 		{if $sortie_date->inscription_prealable}
-		<p>Sur inscription :
+		<p><b>Sur inscription</b>
 			{if $sortie->gestion_picnat}
 				Picardie Nature 03.62.72.22.54 - decouverte@picardie-nature.org
 			{else}
 				{if $sortie->portable}{$sortie->portable}{else}{$sortie->tel}{/if}
 			{/if}
+			{if $sortie_date->inscription_date_limite}
+				<b>date limite d'inscription :</b> {$sortie_date->inscription_date_limite|date_format:"%d-%m-%Y"}
+			{/if}
 		</p>
 		{/if}
-		<p>Matériel :
+			<p><b>Matériel :</b>
 		<ul>
 		{foreach from=$sortie->materiels() item=materiel}
 			{if $materiel.a_prevoir}
 				<li>{$materiel.lib}</li>
 			{/if}
 		{/foreach}
+		{if $sortie->materiel_autre}<li>{$sortie->materiel_autre}</li>{/if}
 		</ul>
 		</p>
-		<p>Structure : {if $sortie->structure}{$sortie->structure}{else}Picardie-Nature{/if}</p>
+		<p><b>Rendez-vous :</b> {$sortie->description_lieu}</p>
 		{assign var=point value=$sortie->point()}
+	
+		{if $point}
+			{assign var=commune value=$point->get_commune()}
+			<p>
+				<b>Coordonnées GPS :</b> {$point->get_x()},{$point->get_y()}
+				{if $commune} <b>Commune :</b> {$commune}{/if}
+			</p>
+		{/if}
 		{if $point->get_x()}
 		{literal}
 		<style>#map { width:100%; height: 350px; }</style>

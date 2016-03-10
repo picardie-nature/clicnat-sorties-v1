@@ -1,6 +1,6 @@
 {literal}
 <script src="https://ssl.picardie-nature.org/statique/proj4js/2.3.3/proj4.js"></script>
-<script src="https://ssl.picardie-nature.org/statique/OpenLayers-3.11.2/ol-debug.js"></script>
+<script src="https://ssl.picardie-nature.org/statique/OpenLayers-3.11.2/ol.js"></script>
 <script src="http://v2.clicnat.fr/js/gpic.js"></script>
 <script>
 var xorg = 2.80151;

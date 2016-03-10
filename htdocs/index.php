@@ -794,6 +794,16 @@ class Sortie extends clicnat_smarty {
 						$dates[] = $date;
 			}
 		}
+		$poles = [];
+		foreach (clicnat_sortie::poles_sortie() as $pole) {
+			$poles[$pole['id_sortie_pole']] = $pole['lib'];
+		}
+		$pays = [];
+		foreach (clicnat_pays_statistique::liste($this->db) as $p) {
+			$pays[$p->id_pays] = $p->nom;
+		}
+		$this->assign('poles', json_encode($poles,JSON_HEX_APOS));
+		$this->assign('pays', json_encode($pays,JSON_HEX_APOS));
 		$this->assign_by_ref("dates", $dates);
 	}
 
@@ -805,14 +815,14 @@ class Sortie extends clicnat_smarty {
 
 	function before_json_sortie() {
 		$sortie = new clicnat_sortie($this->db, $_GET['id_sortie']);
-		$output = array(
+		$output = [ 
 			"nom" => $sortie->nom,
 			"description" => $sortie->description,
 			"description_lieu" => $sortie->description_lieu,
 			"accessible_mobilite_reduite" => $sortie->accessible_mobilite_reduite,
 			"accessible_deficient_auditif" => $sortie->accessible_deficient_auditif,
 			"accessible_deficient_visuel" => $sortie->accessible_deficient_visuel
-		);
+		];
 		echo json_encode($output);
 		exit();
 	}

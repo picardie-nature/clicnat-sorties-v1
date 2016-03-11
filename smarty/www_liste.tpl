@@ -204,7 +204,7 @@ function Calendrier() {
 	// btn marker sur les boites activités
 	$('.btn-activite-map').click(function (e) {
 		e.preventDefault();
-		document.location = '#carte';
+		document.location.hash = '#carte';
 		var x = $(this).attr('data-x');
 		var y = $(this).attr('data-y');
 		var p = ol.proj.transform([parseFloat(x),parseFloat(y)], 'EPSG:4326','EPSG:3857');

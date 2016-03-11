@@ -746,7 +746,7 @@ class Sortie extends clicnat_smarty {
 
 		if (!isset($_GET['datefin'])) {
 			if (!isset($_GET['njours'])) 
-				$njours = 90;
+				$njours = 365;
 			else
 				$njours = (int)$_GET['njours'];
 			$fin = strftime("%Y-%m-%d", strtotime($deb)+86400*$njours);

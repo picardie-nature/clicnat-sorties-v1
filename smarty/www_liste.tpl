@@ -347,7 +347,7 @@ $(document).ready(function () {
 		<div class="panel-footer">
 			<span class="activite-date">{$date->date_sortie|date_format:"%A %e %B à %Hh%M"}</span>
 			{if $commune}
-				<div class="btn-group pull-right">
+				<div class="btn-group pull-right sorties-btn-commune">
 					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 						{$commune} <span class="caret"></span>
 					</button>

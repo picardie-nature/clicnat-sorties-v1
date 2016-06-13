@@ -739,6 +739,11 @@ class Sortie extends clicnat_smarty {
 	}
 
 	function before_www_liste() {
+		if (empty($_GET['poles']))
+			$liste_poles = [1,2,3,4,5];
+		else 
+			$liste_poles=$_GET['poles'];
+
 		if (!isset($_GET['datedeb']))
 			$deb = strftime("%Y-%m-%d");
 		else
@@ -754,16 +759,12 @@ class Sortie extends clicnat_smarty {
 			$fin = strftime("%Y-%m-%d", strtotime($_GET['datefin']));
 		}
 
-		$dates = $dates_sorties = clicnat_sortie_date::periode($this->db, $deb, $fin);
+		$dates_sorties = clicnat_sortie_date::periode($this->db, $deb, $fin);
 
-		if (isset($_GET['id_pole'])) {
-			$dates = array();
-			foreach ($dates_sorties as $date) {
-				if ($date->sortie->id_sortie_pole == $_GET['id_pole'])
-					$dates[] = $date;
-			}
-		} else {
-			$dates = $dates_sorties;
+		$dates = [];
+		foreach ($dates_sorties as $date) {
+			if (in_array($date->sortie->id_sortie_pole, $liste_poles))
+				$dates[] = $date;
 		}
 		if (isset($_GET['id_reseau'])) {
 			$old_dates = $dates;

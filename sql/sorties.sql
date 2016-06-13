@@ -182,3 +182,5 @@ alter table sortie add id_sortie_reseau integer references sortie_reseau (id_sor
 alter table sortie alter id_sortie_reseau set default 12;
 update sortie set id_sortie_reseau=12 where id_sortie_reseau is null;
 alter table sortie alter id_sortie_reseau set not null;
+
+insert into sortie_pole (lib) values ('observatoire décharges sauvage');

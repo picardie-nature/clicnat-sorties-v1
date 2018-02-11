@@ -44,7 +44,7 @@ class Sortie extends clicnat_smarty {
 	use clicnat_mini_template;
 	protected $dests_notifications = [];
 
-	const admins = '2819,2109,2033,3021,3102,3230,3224,1001,3315,2205';
+	const admins = '2109,2033,3230,1001,3091';
 
 	private function is_admin($id) {
 		$admins = explode(',', self::admins);
